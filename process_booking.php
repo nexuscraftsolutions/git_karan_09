@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 //  }
 
 // Validate required fields
-$required_fields = ['therapist_id', 'full_name', 'phone', 'booking_date', 'booking_time', 'total_amount'];
+$required_fields = ['therapist_id', 'full_name', 'phone', 'address', 'booking_date', 'booking_time', 'total_amount'];
 $errors = [];
 
 foreach ($required_fields as $field) {
@@ -36,6 +36,7 @@ $therapist_id = (int)$_POST['therapist_id'];
 $full_name = sanitizeInput($_POST['full_name']);
 $email = sanitizeInput($_POST['email']);
 $phone = sanitizeInput($_POST['phone']);
+$address = sanitizeInput($_POST['address']);
 $booking_date = sanitizeInput($_POST['booking_date']);
 $booking_time = sanitizeInput($_POST['booking_time']);
 $message = sanitizeInput($_POST['message'] ?? '');
@@ -106,6 +107,7 @@ try {
         'full_name' => $full_name,
         'email' => $email,
         'phone' => $phone,
+        'address' => $address,
         'booking_date' => $booking_date,
         'booking_time' => $booking_time,
         'message' => $message,

@@ -219,6 +219,157 @@ body {
     align-items: center;
 }
 
+/* Service Banner */
+.service-banner {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.banner-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+.banner-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.banner-text h6 {
+    color: white;
+    margin: 0;
+    font-weight: 600;
+}
+
+.banner-text p {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Hero Badge */
+.hero-badge .badge {
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 25px;
+}
+
+/* How It Works */
+.how-it-works {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.step-item {
+    text-align: center;
+    color: white;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.5rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* Hero Image Container */
+.hero-image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.hero-main-image {
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 20px !important;
+}
+
+/* Floating Elements */
+.floating-element {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--primary-color);
+    padding: 0.75rem 1rem;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.floating-1 {
+    top: 10%;
+    right: -10px;
+    animation-delay: 0s;
+}
+
+.floating-2 {
+    bottom: 30%;
+    left: -20px;
+    animation-delay: 1s;
+}
+
+.floating-3 {
+    top: 50%;
+    right: -30px;
+    animation-delay: 2s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .banner-content {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .banner-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .floating-element {
+        display: none;
+    }
+    
+    .how-it-works .row {
+        text-align: center;
+    }
+    
+    .step-item {
+        margin-bottom: 1rem;
+    }
+}
+
 .hero-section-inner {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
     color: white;

@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($action === 'add' || $action === 'edit') {
         $name = sanitizeInput($_POST['name'] ?? '');
         $description = sanitizeInput($_POST['description'] ?? '');
+        $points = sanitizeInput($_POST['points'] ?? '');
         $iconType = $_POST['icon_type'] ?? 'bootstrap';
         $iconValue = sanitizeInput($_POST['icon_value'] ?? '');
         
@@ -36,8 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
                 
                 if ($action === 'add') {
-                    $stmt = $db->prepare("INSERT INTO services (name, description, icon_type, icon_value, icon_image) VALUES (?, ?, ?, ?, ?)");
-                    $stmt->execute([$name, $description, $iconType, $iconValue, $iconPath]);
+                    $stmt = $db->prepare("INSERT INTO services (name, description, points, icon_type, icon_value, icon_image) VALUES (?, ?, ?, ?, ?, ?)");
+                    $stmt->execute([$name, $description, $points, $iconType, $iconValue, $iconPath]);
                     $message = 'Service added successfully!';
                 } else {
                     $serviceId = (int)$_POST['service_id'];
@@ -52,8 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         }
                     }
                     
-                    $stmt = $db->prepare("UPDATE services SET name = ?, description = ?, icon_type = ?, icon_value = ?" . ($iconPath ? ", icon_image = ?" : "") . " WHERE id = ?");
-                    $params = [$name, $description, $iconType, $iconValue];
+                    $stmt = $db->prepare("UPDATE services SET name = ?, description = ?, points = ?, icon_type = ?, icon_value = ?" . ($iconPath ? ", icon_image = ?" : "") . " WHERE id = ?");
+                    $params = [$name, $description, $points, $iconType, $iconValue];
                     if ($iconPath) $params[] = $iconPath;
                     $params[] = $serviceId;
                     $stmt->execute($params);
@@ -218,6 +219,12 @@ $services = getAllServicesWithIcons();
                     </div>
                     
                     <div class="mb-3">
+                        <label class="form-label fw-bold">Key Points</label>
+                        <textarea class="form-control" name="points" id="servicePoints" rows="3" placeholder="Enter key highlights separated by | (pipe). Example: Professional therapists|Premium products|Relaxing ambiance"></textarea>
+                        <small class="form-text text-muted">Separate each point with | (pipe symbol)</small>
+                    </div>
+                    
+                    <div class="mb-3">
                         <label class="form-label fw-bold">Icon Type</label>
                         <div class="row">
                             <div class="col-md-6">
@@ -360,6 +367,7 @@ $extraScripts = '<script>
                     document.getElementById("serviceId").value = id;
                     document.getElementById("serviceName").value = data.service.name;
                     document.getElementById("serviceDescription").value = data.service.description || "";
+                    document.getElementById("servicePoints").value = data.service.points || "";
                     
                     // Set icon type
                     const iconType = data.service.icon_type || "bootstrap";
@@ -399,6 +407,7 @@ $extraScripts = '<script>
         document.getElementById("serviceModalTitle").textContent = "Add New Service";
         document.getElementById("formAction").value = "add";
         document.getElementById("serviceId").value = "";
+        document.getElementById("servicePoints").value = "";
         document.getElementById("bootstrapIconSection").style.display = "block";
         document.getElementById("uploadIconSection").style.display = "none";
         updateIconPreview();

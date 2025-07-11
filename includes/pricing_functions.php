@@ -42,9 +42,9 @@ function createBookingWithRegion($data) {
     try {
         $stmt = $db->prepare("
             INSERT INTO bookings (
-                therapist_id, full_name, email, phone, booking_date, booking_time, 
+                therapist_id, full_name, email, phone, address, booking_date, booking_time, 
                 message, total_amount, region, is_night, night_charge, status
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')
         ");
         
         $result = $stmt->execute([
@@ -52,6 +52,7 @@ function createBookingWithRegion($data) {
             $data['full_name'],
             $data['email'],
             $data['phone'],
+            $data['address'],
             $data['booking_date'],
             $data['booking_time'],
             $data['message'],

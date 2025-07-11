@@ -374,8 +374,8 @@ function createBooking($data) {
     
     try {
         $stmt = $db->prepare("
-            INSERT INTO bookings (therapist_id, full_name, email, phone, booking_date, booking_time, message, total_amount, status) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'pending')
+            INSERT INTO bookings (therapist_id, full_name, email, phone, address, booking_date, booking_time, message, total_amount, status) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')
         ");
         
         $result = $stmt->execute([
@@ -383,6 +383,7 @@ function createBooking($data) {
             $data['full_name'],
             $data['email'],
             $data['phone'],
+            $data['address'],
             $data['booking_date'],
             $data['booking_time'],
             $data['message'],

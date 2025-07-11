@@ -110,6 +110,12 @@
                                                    value="<?php echo htmlspecialchars($_SESSION['user_phone'] ?? ''); ?>" required>
                                             <small class="form-text text-muted">Required - primary contact method</small>
                                         </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Address *</label>
+                                            <textarea class="form-control" name="address" rows="2" 
+                                                      placeholder="Enter your complete address for the therapist visit" required></textarea>
+                                            <small class="form-text text-muted">Complete address where the therapist should visit</small>
+                                        </div>
                                         <div class="col-md-6">
                                             <label class="form-label">Booking Date *</label>
                                             <input type="date" class="form-control" name="booking_date" min="<?php echo date('Y-m-d'); ?>" required>

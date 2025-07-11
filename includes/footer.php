@@ -60,9 +60,9 @@
                 </div>
                 <div class="col-md-6 text-md-end">
                     <p class="text-muted mb-0">
-                        <a href="#" class="text-decoration-none me-3">Privacy Policy</a>
-                        <a href="#" class="text-decoration-none me-3">Terms of Service</a>
-                        <a href="#" class="text-decoration-none">Sitemap</a>
+                        <a href="<?php echo SITE_URL; ?>/privacy-policy.php" class="text-decoration-none me-3">Privacy Policy</a>
+                        <a href="<?php echo SITE_URL; ?>/terms-of-service.php" class="text-decoration-none me-3">Terms of Service</a>
+                        <a href="<?php echo SITE_URL; ?>/sitemap.php" class="text-decoration-none">Sitemap</a>
                     </p>
                 </div>
             </div>

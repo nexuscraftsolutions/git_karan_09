@@ -32,7 +32,7 @@ if (!verifyRazorpayPayment($paymentId, $orderId, $signature)) {
 }
 
 // Validate booking details
-$required_fields = ['therapist_id', 'full_name', 'phone', 'booking_date', 'booking_time', 'total_amount'];
+$required_fields = ['therapist_id', 'full_name', 'phone', 'address', 'booking_date', 'booking_time', 'total_amount'];
 $errors = [];
 
 foreach ($required_fields as $field) {
@@ -51,6 +51,7 @@ $therapist_id = (int)$_POST['therapist_id'];
 $full_name = sanitizeInput($_POST['full_name']);
 $email = sanitizeInput($_POST['email']);
 $phone = sanitizeInput($_POST['phone']);
+$address = sanitizeInput($_POST['address']);
 $booking_date = sanitizeInput($_POST['booking_date']);
 $booking_time = sanitizeInput($_POST['booking_time']);
 $message = sanitizeInput($_POST['message'] ?? '');
@@ -88,8 +89,8 @@ try {
     
     // Create booking with payment details
     $stmt = $db->prepare("
-        INSERT INTO bookings (therapist_id, full_name, email, phone, booking_date, booking_time, message, total_amount, payment_id, payment_status, status) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'completed', 'confirmed')
+        INSERT INTO bookings (therapist_id, full_name, email, phone, address, booking_date, booking_time, message, total_amount, payment_id, payment_status, status) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'completed', 'confirmed')
     ");
     
     $result = $stmt->execute([
@@ -97,6 +98,7 @@ try {
         $full_name,
         $email,
         $phone,
+        $address,
         $booking_date,
         $booking_time,
         $message,

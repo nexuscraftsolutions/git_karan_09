@@ -15,7 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     if ($action === 'add' || $action === 'edit') {
         $name = sanitizeInput($_POST['name'] ?? '');
-        $price = (float)($_POST['price_per_session'] ?? 0);
         $priceNcr = (float)($_POST['price_ncr'] ?? 0);
         $priceOther = (float)($_POST['price_other'] ?? 0);
         $height = sanitizeInput($_POST['height'] ?? '');
@@ -25,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $status = $_POST['status'] ?? 'active';
         $services = $_POST['services'] ?? [];
         
-        if (empty($name) || $price <= 0 || $priceNcr <= 0 || $priceOther <= 0) {
+        if (empty($name) || $priceNcr <= 0 || $priceOther <= 0) {
             $message = 'Name and valid prices for all regions are required';
             $messageType = 'danger';
         } else {
@@ -37,10 +36,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($action === 'add') {
                     // Add new therapist
                     $stmt = $db->prepare("
-                        INSERT INTO therapists (name, price_per_session, price_ncr, price_other, height, weight, description, availability_slots, status) 
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        INSERT INTO therapists (name, price_ncr, price_other, height, weight, description, availability_slots, status) 
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                     ");
-                    $stmt->execute([$name, $price, $priceNcr, $priceOther, $height, $weight, $description, $availability, $status]);
+                    $stmt->execute([$name, $priceNcr, $priceOther, $height, $weight, $description, $availability, $status]);
                     $therapistId = $db->lastInsertId();
                     
                 } else {
@@ -48,10 +47,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $therapistId = (int)$_POST['therapist_id'];
                     $stmt = $db->prepare("
                         UPDATE therapists 
-                        SET name = ?, price_per_session = ?, price_ncr = ?, price_other = ?, height = ?, weight = ?, description = ?, availability_slots = ?, status = ?
+                        SET name = ?, price_ncr = ?, price_other = ?, height = ?, weight = ?, description = ?, availability_slots = ?, status = ?
                         WHERE id = ?
                     ");
-                    $stmt->execute([$name, $price, $priceNcr, $priceOther, $height, $weight, $description, $availability, $status, $therapistId]);
+                    $stmt->execute([$name, $priceNcr, $priceOther, $height, $weight, $description, $availability, $status, $therapistId]);
                 }
                 
                 // Update services
@@ -270,10 +269,6 @@ $services = getAllServices();
                             <input type="text" class="form-control" name="name" id="therapistName" required>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Price per Session (₹) *</label>
-                            <input type="number" class="form-control" name="price_per_session" id="therapistPrice" min="1" required>
-                        </div>
-                        <div class="col-md-6">
                             <label class="form-label">Delhi-NCR Price (₹) *</label>
                             <input type="number" class="form-control" name="price_ncr" id="therapistPriceNcr" min="1" required>
                         </div>
@@ -377,9 +372,8 @@ $extraScripts = '<script>
                     document.getElementById("formAction").value = "edit";
                     document.getElementById("therapistId").value = id;
                     document.getElementById("therapistName").value = data.therapist.name;
-                    document.getElementById("therapistPrice").value = data.therapist.price_per_session;
-                    document.getElementById("therapistPriceNcr").value = data.therapist.price_ncr || data.therapist.price_per_session;
-                    document.getElementById("therapistPriceOther").value = data.therapist.price_other || data.therapist.price_per_session;
+                    document.getElementById("therapistPriceNcr").value = data.therapist.price_ncr;
+                    document.getElementById("therapistPriceOther").value = data.therapist.price_other;
                     document.getElementById("therapistHeight").value = data.therapist.height || "";
                     document.getElementById("therapistWeight").value = data.therapist.weight || "";
                     document.getElementById("therapistDescription").value = data.therapist.description || "";

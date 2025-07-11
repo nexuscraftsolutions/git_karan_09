@@ -91,8 +91,8 @@
                     <img src="<?php echo SITE_URL; ?>/uploads/website/logo.png" width="150px">
                 </a>
                 
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto ms-3">
+                <div class="navbar-collapse">
+                    <ul class="navbar-nav me-auto ms-4">
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo SITE_URL; ?>">Home</a>
                         </li>
@@ -114,7 +114,7 @@
                     </ul>
                     
                     <!-- Region Price Indicator (Desktop only) -->
-                    <div class="region-price-indicator me-2">
+                    <div class="region-price-indicator me-3">
                         <button class="btn btn-outline-primary btn-sm" id="regionPriceBtn" onclick="openRegionModal()">
                             <i class="bi bi-building me-1"></i>
                             <span id="currentRegionText">Delhi-NCR</span>
@@ -122,14 +122,14 @@
                         </button>
                     </div>
                     
-                    <div class="navbar-nav">
+                    <div class="d-flex align-items-center">
                         <?php if (isUserLoggedIn()): ?>
-                            <div class="user-info d-flex align-items-center">
+                            <div class="user-info">
                                 <div class="user-avatar me-2">
                                     <?php echo strtoupper(substr($_SESSION['user_name'], 0, 1)); ?>
                                 </div>
                                 <div class="dropdown">
-                                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                                    <button class="btn btn-link dropdown-toggle d-flex align-items-center text-decoration-none p-0" type="button" data-bs-toggle="dropdown">
                                         <div class="text-start d-none d-md-block">
                                             <div class="fw-semibold">Hi, <?php echo htmlspecialchars(explode(' ', $_SESSION['user_name'])[0]); ?></div>
                                             <?php if (!empty($_SESSION['user_city'])): ?>
@@ -138,7 +138,7 @@
                                                 </small>
                                             <?php endif; ?>
                                         </div>
-                                    </a>
+                                    </button>
                                     <ul class="dropdown-menu dropdown-menu-end">
                                         <li><a class="dropdown-item" href="profile.php">
                                             <i class="bi bi-person me-2"></i>Profile
@@ -160,13 +160,14 @@
                                 </div>
                             </div>
                         <?php else: ?>
-                            <!-- Desktop Login/Signup -->
-                            <a class="nav-link" href="<?php echo SITE_URL; ?>/login.php">
-                                <i class="bi bi-box-arrow-in-right me-1 d-none d-xl-inline"></i>Login
-                            </a>
-                            <a class="nav-link btn btn-primary text-white ms-1 px-3" href="<?php echo SITE_URL; ?>/signup.php">
-                                <i class="bi bi-person-plus me-1 d-none d-xl-inline"></i>Sign Up
-                            </a>
+                            <div class="d-flex gap-2">
+                                <a class="btn btn-outline-primary" href="<?php echo SITE_URL; ?>/login.php">
+                                    <i class="bi bi-box-arrow-in-right me-1"></i>Login
+                                </a>
+                                <a class="btn btn-primary" href="<?php echo SITE_URL; ?>/signup.php">
+                                    <i class="bi bi-person-plus me-1"></i>Sign Up
+                                </a>
+                            </div>
                         <?php endif; ?>
                     </div>
                 </div>

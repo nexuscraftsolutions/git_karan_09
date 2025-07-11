@@ -51,6 +51,9 @@ try {
                 <div class="mb-2">
                     <strong>Phone:</strong> ' . htmlspecialchars($booking['phone']) . '
                 </div>
+                <div class="mb-2">
+                    <strong>Address:</strong> ' . htmlspecialchars($booking['address'] ?? 'Not provided') . '
+                </div>
             </div>
             <div class="col-md-6">
                 <h6 class="fw-bold text-primary mb-3">Booking Details</h6>
