@@ -46,16 +46,56 @@ $services = getAllServices();
 <section class="hero-section">
     <div class="container">
         <!-- Service Banner -->
-        <div class="row mb-4">
+        <div class="row mb-5">
             <div class="col-12">
-                <div class="service-banner">
-                    <div class="banner-content">
-                        <div class="banner-icon">
-                            <i class="bi bi-geo-alt-fill"></i>
+                <div class="hero-banner">
+                    <div class="hero-banner-content">
+                        <div class="hero-badge mb-4">
+                            <span class="badge bg-light text-primary px-4 py-2">
+                                <i class="bi bi-award me-2"></i>India's Premier Spa Platform
+                            </span>
                         </div>
-                        <div class="banner-text">
-                            <h6 class="mb-1">Professional Spa Services at Your Doorstep</h6>
-                            <p class="mb-0">Book certified therapists across Delhi-NCR & all major cities in India</p>
+                        
+                        <h1 class="hero-main-title mb-4">
+                            Professional Spa Services 
+                            <span class="text-warning">At Your Home</span>
+                        </h1>
+                        
+                        <p class="hero-subtitle mb-5">
+                            Book certified therapists for premium spa treatments delivered to your doorstep. 
+                            Experience ultimate relaxation in the comfort of your own space.
+                        </p>
+                        
+                        <!-- Static Highlights -->
+                        <div class="hero-highlights mb-5">
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="bi bi-heart-pulse"></i>
+                                </div>
+                                <span>Wellness</span>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="bi bi-house"></i>
+                                </div>
+                                <span>At Home</span>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="bi bi-clock"></i>
+                                </div>
+                                <span>24/7 Available</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Call to Action -->
+                        <div class="hero-cta">
+                            <a href="models.php" class="btn btn-light btn-lg me-3">
+                                <i class="bi bi-people me-2"></i>View Therapists
+                            </a>
+                            <a href="services.php" class="btn btn-outline-light btn-lg">
+                                <i class="bi bi-spa me-2"></i>Our Services
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -63,23 +103,10 @@ $services = getAllServices();
         </div>
         
         <div class="row align-items-center">
-            <div class="col-lg-6 hero-content">
-                <div class="hero-badge mb-3">
-                    <span class="badge bg-light text-primary px-3 py-2">
-                        <i class="bi bi-award me-2"></i>India's Premier Spa Platform
-                    </span>
-                </div>
-                <h1 class="display-4 fw-bold mb-4 fade-in">
-                    Professional Spa Services 
-                    <span class="text-warning">At Your Home</span>
-                </h1>
-                <p class="lead mb-4 fade-in">
-                    Book certified therapists for premium spa treatments delivered to your doorstep. 
-                    Experience ultimate relaxation and wellness in the comfort of your own space.
-                </p>
-                
+            <div class="col-lg-6 hero-content">                
                 <!-- How It Works -->
                 <div class="how-it-works mb-4 fade-in">
+                    <h3 class="text-white mb-3">How It Works</h3>
                     <div class="row g-3">
                         <div class="col-md-4">
                             <div class="step-item">
@@ -101,36 +128,11 @@ $services = getAllServices();
                         </div>
                     </div>
                 </div>
-                
-                <div class="d-flex gap-3 fade-in">
-                    <a href="models.php" class="btn btn-light btn-lg">
-                        <i class="bi bi-people me-2"></i>View Therapists
-                    </a>
-                    <a href="services.php" class="btn btn-outline-light btn-lg">
-                        <i class="bi bi-spa me-2"></i>Our Services
-                    </a>
-                </div>
             </div>
             <div class="col-lg-6">
-                <div class="text-center fade-in">
-                    <div class="hero-image-container">
-                        <img src="https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=600" 
-                             class="img-fluid rounded-xl shadow-lg hero-main-image" alt="Spa Experience">
-                        
-                        <!-- Floating Elements -->
-                        <div class="floating-element floating-1">
-                            <i class="bi bi-heart-pulse"></i>
-                            <span>Wellness</span>
-                        </div>
-                        <div class="floating-element floating-2">
-                            <i class="bi bi-house"></i>
-                            <span>At Home</span>
-                        </div>
-                        <div class="floating-element floating-3">
-                            <i class="bi bi-clock"></i>
-                            <span>24/7 Available</span>
-                        </div>
-                    </div>
+                <div class="text-center fade-in hero-image-section">
+                    <img src="https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                         class="img-fluid rounded-xl shadow-lg hero-main-image" alt="Spa Experience">
                 </div>
             </div>
         </div>

@@ -86,12 +86,12 @@
             </div>
             
             <!-- Desktop Layout (visible on desktop only) -->
-            <div class="d-none d-lg-flex align-items-center w-100">
+            <div class="d-none d-lg-flex align-items-center w-100 justify-content-between">
                 <a class="navbar-brand fw-bold text-primary d-flex align-items-center" href="<?php echo SITE_URL; ?>">
                     <img src="<?php echo SITE_URL; ?>/uploads/website/logo.png" width="150px">
                 </a>
                 
-                <div class="navbar-collapse">
+                <div class="d-flex align-items-center">
                     <ul class="navbar-nav me-auto ms-4">
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo SITE_URL; ?>">Home</a>
@@ -112,7 +112,9 @@
                             <a class="nav-link" href="<?php echo SITE_URL; ?>/contact.php">Contact</a>
                         </li>
                     </ul>
-                    
+                </div>
+                
+                <div class="d-flex align-items-center">
                     <!-- Region Price Indicator (Desktop only) -->
                     <div class="region-price-indicator me-3">
                         <button class="btn btn-outline-primary btn-sm" id="regionPriceBtn" onclick="openRegionModal()">
@@ -170,11 +172,10 @@
                             </div>
                         <?php endif; ?>
                     </div>
-                </div>
             </div>
             
             <!-- Mobile Collapse Menu -->
-            <div class="collapse navbar-collapse d-lg-none" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo SITE_URL; ?>">Home</a>
